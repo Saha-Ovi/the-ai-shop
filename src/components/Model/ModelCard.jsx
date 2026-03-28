@@ -6,8 +6,21 @@ const ModelCard = ({ model,cart,setCart }) => {
     const handledSubscribe=()=>
     {
         // setIsSubscribed(true);
-        setIsSubscribed(!isSubscribed);
-        setCart([...cart,model]);
+        // setIsSubscribed(!isSubscribed);
+        const exist=cart.find(item=> item.id===model.id)
+      
+        if(!exist)
+        {
+            
+            setCart([...cart,model]);
+            setIsSubscribed(true);
+        }
+        else
+        {
+          const newCart=cart.filter(item=> item.id!==model.id);
+          setCart(newCart);
+          setIsSubscribed(false);
+        }
         
     }
     return (

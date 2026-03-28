@@ -6,7 +6,7 @@ const Banner = () => {
     return (
         <div className='container mx-auto'>
             <div className="hero min-h-[60vh]">
-                <div className="hero-content gap-64 flex-col lg:flex-row-reverse">
+                <div className="hero-content gap-64 p-8 flex-col lg:flex-row-reverse">
                     <div>
                         <img className='h-130 w-auto object-contain animate-pulse' src={banImg}/>
                     </div>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { toast } from 'react-toastify';
 
 const ModelCard = ({ model,cart,setCart }) => {
     // console.log(model);
@@ -14,12 +15,14 @@ const ModelCard = ({ model,cart,setCart }) => {
             
             setCart([...cart,model]);
             setIsSubscribed(true);
+            toast.success(`${model.title} added to cart`);
         }
         else
         {
           const newCart=cart.filter(item=> item.id!==model.id);
           setCart(newCart);
           setIsSubscribed(false);
+          toast.error(`${model.title} already added to cart`);
         }
         
     }
@@ -40,7 +43,7 @@ const ModelCard = ({ model,cart,setCart }) => {
                             <div>
                                {
                                  model.price>0 ?<p> <span className='font-extrabold text-2xl'>${model.price}</span>
-                                <span className='text-zinc-400 text-lg'>/month</span></p>: <span className='text-2xl text-lime-500'>Free</span>
+                                <span className='text-zinc-400 text-lg'>/month</span></p>: <span className='text-3xl text-lime-500'>Free</span>
 
                                }
                             </div>

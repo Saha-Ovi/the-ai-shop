@@ -1,5 +1,6 @@
 import React from 'react';
 import CartCard from './CartCard';
+import { toast } from 'react-toastify';
 
 const Cart = ({ cart, setCart }) => {
     // console.log(cart);
@@ -7,11 +8,13 @@ const Cart = ({ cart, setCart }) => {
     const handledCheckout=()=>
     {
         setCart([]);
+        toast.success("Proceeded to the checkout ");
     }
     const handledRemove=(item)=>
     {
         const newCart=cart.filter(cartItem=>cartItem.id!==item.id);
         setCart(newCart);
+        toast.success(`${item.title} remove from the card successfully`)
     }
     return (
         <div className='container mx-auto space-y-6'>

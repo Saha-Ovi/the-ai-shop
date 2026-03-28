@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const ModelCard = ({ model }) => {
+const ModelCard = ({ model,cart,setCart }) => {
     // console.log(model);
+    const [isSubscribed,setIsSubscribed]=useState(false);
+    const handledSubscribe=()=>
+    {
+        // setIsSubscribed(true);
+        setIsSubscribed(!isSubscribed);
+        setCart([...cart,model]);
+        
+    }
     return (
         // card div
             <div className='h-full'>
@@ -16,12 +24,21 @@ const ModelCard = ({ model }) => {
                         <div className='space-y-4'>
                             <h2 className='font-extrabold text-2xl'>{model.title}</h2>
                             <p> {model.description} </p>
-                            <p>
-                                <span className='font-extrabold text-2xl'>${model.price}</span>
-                                <span className='text-zinc-400 text-lg'>/month</span>
-                            </p>
+                            <div>
+                               {
+                                 model.price>0 ?<p> <span className='font-extrabold text-2xl'>${model.price}</span>
+                                <span className='text-zinc-400 text-lg'>/month</span></p>: <span className='text-2xl text-lime-500'>Free</span>
+
+                               }
+                            </div>
                         </div>
-                        <button className='btn w-full bg-red-600 text-white font-bold text-2xl rounded-2xl py-8 mt-auto '>Subscribe Now</button>
+                        <button onClick={handledSubscribe} className='btn w-full bg-red-600 text-white font-bold text-2xl rounded-2xl py-8 mt-auto '>
+                           {
+                             (isSubscribed) ? "Subscribed":" Subscribe Now"
+                           }
+                            
+                            
+                            </button>
                     </div>
                 </div>
         </div>
